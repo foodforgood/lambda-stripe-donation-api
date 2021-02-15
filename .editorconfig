@@ -7,3 +7,4 @@ ij_any_space_before_colon = true
 
 [*.yml]
 indent_size = 2
+ij_any_space_before_colon = false

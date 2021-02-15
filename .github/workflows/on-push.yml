@@ -1,30 +1,32 @@
-name : release
+name: release
 
-on :
-  push :
+on:
+  push:
+    branches:
+      - master
 
-env :
-  GITHUB_PUSH_TOKEN : ${{ secrets.INTERSCRIPT_CI_PAT }}
-  GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+env:
+  GITHUB_PUSH_TOKEN: ${{ secrets.INTERSCRIPT_CI_PAT }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-jobs :
-  release :
-    runs-on : ubuntu-latest
-    steps :
-      - name : checkout source cide
-        uses : actions/checkout@v2
-      - name : setup nodejs
-        uses : actions/setup-node@v2
-        with :
-          node-version : '12'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout source cide
+        uses: actions/checkout@v2
+      - name: setup nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
 
-      - name : run build script
-        run : |
+      - name: run build script
+        run: |
           npm ci
           npm run build
 
-      - name : upload archifact
-        uses : actions/upload-artifact@v2
-        with :
-          name : dist
-          path : dist/**
+      - name: upload archifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist/**
