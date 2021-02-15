@@ -22,9 +22,9 @@ jobs:
         with:
           node-version: '12'
 
-      - name: Setup env-vars
+      - name: setup env-vars
         run: |
-          REF="${{ github.event.client_payload.ref }}"
+          REF="{{github.ref}}"
           echo "API_VERSION=${REF#refs/*/v}" >> $GITHUB_ENV
 
       - name: set release version
