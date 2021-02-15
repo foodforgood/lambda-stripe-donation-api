@@ -1,0 +1,31 @@
+{
+    "name": "stripe-payments-api",
+    "scripts": {
+        "build": "npx webpack --mode production --config webpack.config.js"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.2.12",
+        "@types/mocha": "^8.0.3",
+        "@types/node": "^14.6.4",
+        "aws-sdk": "^2.746.0",
+        "chai": "^4.2.0",
+        "codelyzer": "^6.0.0",
+        "dotenv": "^8.2.0",
+        "fs-extra": "^9.0.1",
+        "graphql": "^15.3.0",
+        "mocha": "^8.1.3",
+        "mocha-typescript": "^1.1.17",
+        "npm-run-all": "^4.1.5",
+        "stripe": "^8.79.0",
+        "ts-loader": "^8.0.3",
+        "ts-node": "^8.10.2",
+        "tslint": "^6.1.2",
+        "typescript": "^4.0.2",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12"
+    },
+    "license": "closed",
+    "engines": {
+        "node": "^10 || ^12"
+    }
+}
