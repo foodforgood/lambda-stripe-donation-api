@@ -36,7 +36,7 @@ export const root = {
     },
 
     createPaymentSession: async (params: { priceId: string, successUrl: string, cancelUrl: string }): Promise<string> => {
-        return root.createPaymentSessionV2(Object.assign(params, {quantity: 1}));
+        return root.createPaymentSessionV2(Object.assign({}, params, {quantity: 1}));
     },
 
     createPaymentSessionV2: async (params: { priceId: string, quantity: number, successUrl: string, cancelUrl: string }): Promise<string> => {
