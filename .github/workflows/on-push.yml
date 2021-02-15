@@ -24,7 +24,7 @@ jobs:
 
       - name: setup env-vars
         run: |
-          REF="{{github.ref}}"
+          REF="${{github.ref}}"
           echo "API_VERSION=${REF#refs/*/v}" >> $GITHUB_ENV
 
       - name: set release version
