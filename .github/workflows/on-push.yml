@@ -36,7 +36,7 @@ jobs:
         run: |
           npm ci
           npm run build
-          zip -r dist.zip dist
+          zip -r dist.zip dist/
 
       - name: archive artifact
         uses: actions/upload-artifact@v2
