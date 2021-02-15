@@ -1,4 +1,4 @@
-name: release
+name: on-push
 
 on:
   push:
@@ -27,6 +27,11 @@ jobs:
           REF="${{ github.event.client_payload.ref }}"
           echo "API_VERSION=${REF#refs/*/v}" >> $GITHUB_ENV
 
+      - name: set release version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          npm version ${API_VERSION}
+
       - name: run build script
         run: |
           npm ci
@@ -39,19 +44,19 @@ jobs:
           name: dist
           path: dist/**
 
-      - name: create API Release
+      - name: create new release
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{env.GITHUB_PUSH_TOKEN}}
         with:
-          tag_name: v${{env.INTERSCRIPT_VERSION}}
-          release_name: Release v${{env.INTERSCRIPT_VERSION}}
-          body: Auto release API v${{env.INTERSCRIPT_VERSION}} by @interscript-ci
+          tag_name: v${{env.API_VERSION}}
+          release_name: Release v${{env.API_VERSION}}
+          body: Auto release API v${{env.API_VERSION}} by @GHABOT
           draft: false
           prerelease: false
 
-
-      - name: upload artifact to existing release
+      - name: upload artifact to new release
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v1
         with:
