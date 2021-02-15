@@ -43,11 +43,9 @@ exports.handler = async (event, context) => {
 
     // @ts-ignore
     const status = reply.error ? 500 : 200;
-    const response = {
+    return {
         statusCode: status,
         headers: headers,
         body: JSON.stringify(reply),
     };
-
-    return response;
 };
