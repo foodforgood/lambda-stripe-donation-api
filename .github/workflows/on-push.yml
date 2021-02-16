@@ -30,7 +30,7 @@ jobs:
       - name: set release version
         if: startsWith(github.ref, 'refs/tags/v')
         run: |
-          npm --no-git-tag-version version ${API_VERSION}
+          npm --allow-same-version --no-git-tag-version version ${API_VERSION}
 
       - name: run build script
         run: |
